@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.Basket-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  border: 3px solid #816348;
+  padding: 20px;
+}
+//.Basket-img {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  height: 100%;
+//  width: 50%;
+//}
+//.Basket-img img {
+//  display: block;
+//  height: 100%;
+//}
+//.Basket-setting {
+//  width: 50%;
+//}
+//.Basket-description {
+//  margin-bottom: 30px;
+//}
+//.Basket-title {
+//  margin-bottom: 20px;
+//}
+//.Basket-number-price {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  margin-bottom: 30px;
+//}
+//.Basket-number {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//}
+//.Basket-number-btn {
+//  background: transparent;
+//  border: none;
+//  cursor: pointer;
+//}
+//.Basket-number-btn svg{
+//  width: 30px;
+//  height: 30px;
+//}
+//.Basket-number-fig {
+//  font-size: 30px;
+//  color: #816348;
+//  padding: 10px;
+//}
+//.Basket-price {
+//  font-size: 24px;
+//  color: #816348;
+//}
+//.Basket-total-pay {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: flex-end;
+//}
+//.Basket-total {
+//  font-size: 24px;
+//  color: #816348;
+//}
+//.Basket-pay {
+//  background: transparent;
+//  border: none;
+//  text-align: left;
+//  font-size: 24px;
+//  color: #816348;
+//  cursor: pointer;
+//}
+//.Basket-pay svg {
+//  display: block;
+//  width: 100%;
+//}
+//.Basket-pay-wrapper {
+//  display: flex;
+//  flex-direction: column;
+//  width: 250px;
+//}
+//.Basket-total {
+//  margin-bottom: 30px;
+//}
+.BasketTotalPrice {
+  font-size: 30px;
+  text-align: right;
+  color: #816348;
+  margin: 20px;
+}
+
+

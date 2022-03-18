@@ -1,0 +1,4 @@
+.AppContainer {
+  width: calc(320px + (1620 - 320) * ((100vw - 320px) / (1920 - 320)));
+  margin: auto;
+}

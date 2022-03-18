@@ -1,19 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import NameComponent from './app/NameComponent';
-import Counter from './app/Counter';
-import Form from './app/Form';
-import Input from './app/Input';
+
+import style from './App.module.scss';
+
+import ModalWindowContainer from './containers/ModalWindowContainer';
+import Basket from './components/pages/Basket';
+import BasketContainer from './containers/BasketContainer';
 
 const App = () => (
-  <div>
-    <h1>React App</h1>
-    <NameComponent name="Alexander" lastName="Kholev" />
-    <Counter title="orange" />
-    <Form title="AUSH FORM">
-      <Input />
-    </Form>
+  <div className={style.AppContainer}>
+    <BasketContainer productName="productName" productDescription="productDescription" price={150} action="action" />
   </div>
 );
 

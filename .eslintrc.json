@@ -37,6 +37,7 @@
             "unnamedComponents": "arrow-function" 
             }],
         "react/no-unused-prop-types": "warn",
-        "no-unused-vars": "warn" 
+        "no-unused-vars": "warn",
+        "max-len": "warn"
     }
 }
