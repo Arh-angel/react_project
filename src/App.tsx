@@ -1,15 +1,17 @@
 import React from 'react';
+import MainContainer from './containers/MainContainer';
+import AuthContainer from './containers/AuthContainer';
+import RegistrationContainer from './containers/RegistrationContainer';
 
-import style from './App.module.scss';
-
-import ModalWindowContainer from './containers/ModalWindowContainer';
-import Basket from './components/pages/Basket';
-import BasketContainer from './containers/BasketContainer';
-
-const App = () => (
-  <div className={style.AppContainer}>
-    <BasketContainer productName="productName" productDescription="productDescription" price={150} action="action" />
-  </div>
-);
+const App = () => {
+  console.log('APP => start');
+  return (
+    <>
+      {/* <MainContainer /> */}
+      {/* <AuthContainer /> */}
+      <RegistrationContainer />
+    </>
+  );
+};
 
 export default App;

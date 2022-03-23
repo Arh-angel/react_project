@@ -1,12 +1,12 @@
 import React from 'react';
-import style from './PageWrapper.module.scss';
-import Header from '../Header';
 import Footer from '../Footer';
+import Header from '../Header';
+import style from './PageWrapper.module.scss';
 
 const PageWrapper: React.FC = ({ children }) => (
-  <div className={style.pageContainer}>
+  <div className={style.page_wrapper}>
     <Header />
-    {children}
+    <main className={style.content}>{children}</main>
     <Footer />
   </div>
 );
