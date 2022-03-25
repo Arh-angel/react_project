@@ -21,9 +21,7 @@ const RegistrationPage = () => {
     }
   };
 
-  useEffect(() => {
-    heandler();
-  }, [email, password]);
+  useEffect(heandler, [email, password]);
 
   const submitHeandler = () => {
     if (isValid) {
