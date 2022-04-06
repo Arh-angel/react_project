@@ -1,0 +1,15 @@
+@import '../../../assets/style/vars.scss';
+
+
+
+.wrapper {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  font-family: $text;
+  font-size: $text-size;
+  font-weight: 500;
+  background-color: $sub-color-two;
+  color: #FFFFFF;
+}
