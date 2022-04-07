@@ -6,8 +6,8 @@ const ButtonAuthReg = () => {
   console.log('regauth');
   return (
     <div className={style.wrapper}>
-      <NavLink to="/reg" className={style.reg}>Регистрая</NavLink>
-      <NavLink to="/auth" className={style.auth}>Авторизация</NavLink>
+      <NavLink to="/reg" className={({ isActive }) => `${isActive ? style.active : style.reg}`}>Регистрая</NavLink>
+      <NavLink to="/auth" className={({ isActive }) => `${isActive ? style.active : style.auth}`}>Авторизация</NavLink>
     </div>
   );
 };

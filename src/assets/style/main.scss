@@ -38,5 +38,6 @@ a {
   margin: auto;
 }
 .active {
-  color: $link-yellow-text-color;
+  color: $sub-color-two;
+  border-bottom: 2px solid $sub-color-two;
 }

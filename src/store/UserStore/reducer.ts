@@ -5,7 +5,8 @@ const initialState: UserInfoReducerType = {
   name: '',
   lastName: '',
   age: '',
-  email: ''
+  email: '',
+  password: ''
 };
 
 const userInfoReducer = (state = initialState, action: ActionType) => {
@@ -14,6 +15,11 @@ const userInfoReducer = (state = initialState, action: ActionType) => {
       return {
         ...state,
         name: action.payload
+      };
+    case UserInfoActionsType.setUserPassword:
+      return {
+        ...state,
+        password: action.payload
       };
     case UserInfoActionsType.outPutUser:
       return {

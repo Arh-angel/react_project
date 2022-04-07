@@ -1,4 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { SetUserNameAction } from '../../../../store/UserStore/actions';
 import style from './Input.module.scss';
 
 type InputPropsType = {
@@ -10,7 +12,17 @@ type InputPropsType = {
 const Input = ({
   id, placeholder, type = 'text'
 }: InputPropsType) => {
-  const handler = (event: ChangeEvent<HTMLInputElement>) => '1';
+  const [currentValue, setCurrentValue] = useState('');
+  const dispatch = useDispatch();
+
+  const handler = (event: ChangeEvent<HTMLInputElement>) => {
+    setCurrentValue(event.target.value);
+  };
+
+  useEffect(() => {
+    dispatch(SetUserNameAction(currentValue));
+  }, [currentValue]);
+
   return (
     <label className={style.wrapper} htmlFor={id}>
       <input id={id} onChange={handler} type={type} />
