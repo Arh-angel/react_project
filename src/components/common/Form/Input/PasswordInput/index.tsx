@@ -1,19 +1,29 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { SetRegAuthErrorAction, SetUserPasswordAction } from '../../../../../store/UserStore/actions';
+import { GetRegAuthError, GetUserAuth, GetUserPassword, GetUserRegistered } from '../../../../../store/UserStore/selectors';
 import style from './PasswordInput.module.scss';
 
 type InputPropsType = {
   id: string;
   placeholder: string;
+  value: string | number | readonly string[] | undefined,
   type: 'text' | 'password';
 };
 
 const PasswordInput = ({
-  id, placeholder, type = 'text'
+  id, placeholder, value, type = 'text'
 }: InputPropsType) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTypeInput, setCurrentTypeInput] = useState('');
   const [currentValue, setCurrentValue] = useState('');
+
+  const userRegistered = useSelector(GetUserRegistered);
+  const userAuth = useSelector(GetUserAuth);
+  const userPassword = useSelector(GetUserPassword);
+  const regAuthError = useSelector(GetRegAuthError);
+  const dispatch = useDispatch();
 
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(event.target.value);
@@ -31,9 +41,20 @@ const PasswordInput = ({
     }
   }, [isVisible]);
 
+  useEffect(() => {
+    if (!userRegistered) {
+      dispatch(SetUserPasswordAction(currentValue));
+    }
+    if (!userAuth) {
+      if (currentValue === userPassword) {
+        dispatch(SetRegAuthErrorAction(false));
+      }
+    }
+  }, [currentValue]);
+
   return (
     <label className={style.wrapper} htmlFor={id}>
-      <input id={id} onChange={handler} type={currentTypeInput} />
+      <input id={id} onChange={handler} value={value} type={currentTypeInput} />
       <span>{placeholder}</span>
       <button type="button" onClick={() => setIsVisible(!isVisible)}>
         {

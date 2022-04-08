@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Header.module.scss';
 
 import Form from '../Form';
 import Input from '../Form/Input';
 import Button from '../Button';
 import SearchInput from '../Form/SearchInput';
+import { GetUserAuth } from '../../../store/UserStore/selectors';
+import { SetUserAuthAction } from '../../../store/UserStore/actions';
 
 const Header = () => {
   const [searchItem, setSearchItem] = useState('');
+  const [logInLogOut, setLogInLogOut] = useState('');
+  const [path, setPath] = useState('');
+
+  const userAuth = useSelector(GetUserAuth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userAuth) {
+      setLogInLogOut('Выйти');
+      setPath('/auth');
+    } else {
+      setLogInLogOut('Войти');
+      setPath('/');
+    }
+  }, [userAuth]);
+
+  const handler = () => {
+    if (userAuth) {
+      dispatch(SetUserAuthAction(false));
+    } else {
+      dispatch(SetUserAuthAction(true));
+    }
+  };
 
   return (
     <header className={style.header}>
@@ -38,9 +64,9 @@ const Header = () => {
               </svg>
             }
             type="text" />
-          <Button title="Искать" width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" />
+          <Button title="Искать" handler={() => {}} width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" />
         </div>
-        <Link to="/searchresults"><Button title="Подать обьявление" width="180px" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} /></Link>
+        <Link to="/searchresults"><Button title="Подать обьявление" handler={() => {}} width="180px" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} /></Link>
         <div className={style.profileContainer}>
           <Link to="/userprofile">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +74,7 @@ const Header = () => {
               <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#2a2f3778" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
-          <Link className={style.authLink} to="/auth">Войти</Link>
+          <Link className={style.authLink} onClick={handler} to={path}>{logInLogOut}</Link>
         </div>
       </div>
     </header>
