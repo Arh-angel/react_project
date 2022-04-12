@@ -9,7 +9,8 @@ const initialState: UserInfoReducerType = {
   password: '',
   userRegistered: false,
   userAuth: false,
-  regAuthError: true
+  regAuthError: true,
+  data: []
 };
 
 const userInfoReducer = (state = initialState, action: ActionType) => {
@@ -53,6 +54,11 @@ const userInfoReducer = (state = initialState, action: ActionType) => {
       return {
         ...state,
         regAuthError: action.payload
+      };
+    case UserInfoActionsType.getUsers:
+      return {
+        ...state,
+        data: action.payload
       };
     case UserInfoActionsType.outPutUser:
       return {

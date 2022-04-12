@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { GetUserEmail, GetUserPassword } from '../../../store/UserStore/selectors';
+import { GetUserEmail, GetUserPassword } from '../../../store/users/selectors';
 import Button from '../../common/Button';
 import ButtonAuthReg from '../../common/Button/ButtonAuthReg';
 import Form from '../../common/Form';

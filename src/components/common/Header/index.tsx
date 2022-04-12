@@ -8,8 +8,8 @@ import Form from '../Form';
 import Input from '../Form/Input';
 import Button from '../Button';
 import SearchInput from '../Form/SearchInput';
-import { GetUserAuth } from '../../../store/UserStore/selectors';
-import { SetUserAuthAction } from '../../../store/UserStore/actions';
+import { GetUserAuth } from '../../../store/users/selectors';
+import { SetUserAuthAction } from '../../../store/users/actions';
 
 const Header = () => {
   const [searchItem, setSearchItem] = useState('');

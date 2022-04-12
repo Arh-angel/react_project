@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { GetUserName, GetUserPassword } from '../../../store/UserStore/selectors';
+import { GetUserName, GetUserPassword } from '../../../store/users/selectors';
 import style from './Button.module.scss';
 
 type ButtonPropsType = {

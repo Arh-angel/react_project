@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AuthPage from '../../components/pages/AuthPage';
-import { SetUserAuthAction } from '../../store/UserStore/actions';
-import { GetRegAuthError, GetUserAuth, GetUserEmail, GetUserPassword } from '../../store/UserStore/selectors';
+import { SetUserAuthAction } from '../../store/users/actions';
+import { GetRegAuthError, GetUserAuth, GetUserEmail, GetUserPassword } from '../../store/users/selectors';
 
 const AuthContainer = () => {
   const userEmail = useSelector(GetUserEmail);

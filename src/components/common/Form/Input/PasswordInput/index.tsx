@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetRegAuthErrorAction, SetUserPasswordAction } from '../../../../../store/UserStore/actions';
-import { GetRegAuthError, GetUserAuth, GetUserPassword, GetUserRegistered } from '../../../../../store/UserStore/selectors';
+import { SetRegAuthErrorAction, SetUserPasswordAction } from '../../../../../store/users/actions';
+import { GetRegAuthError, GetUserAuth, GetUserPassword, GetUserRegistered } from '../../../../../store/users/selectors';
 import style from './PasswordInput.module.scss';
 
 type InputPropsType = {

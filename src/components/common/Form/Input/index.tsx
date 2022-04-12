@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetRegAuthErrorAction, SetUserAgeAction, SetUserEmailAction, SetUserLastNameAction, SetUserNameAction } from '../../../../store/UserStore/actions';
-import { GetRegAuthError, GetUserAuth, GetUserEmail, GetUserRegistered } from '../../../../store/UserStore/selectors';
+import { SetRegAuthErrorAction, SetUserAgeAction, SetUserEmailAction, SetUserLastNameAction, SetUserNameAction } from '../../../../store/users/actions';
+import { GetRegAuthError, GetUserAuth, GetUserEmail, GetUserRegistered } from '../../../../store/users/selectors';
 import style from './Input.module.scss';
 
 type InputPropsType = {

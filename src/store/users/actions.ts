@@ -1,3 +1,4 @@
+import makeRequest from '../../network';
 import { UserInfoActionsTypeType } from './types';
 
 export const UserInfoActionsType: UserInfoActionsTypeType = {
@@ -9,6 +10,7 @@ export const UserInfoActionsType: UserInfoActionsTypeType = {
   setUserRegistered: 'SET_USER_REGISTERED',
   setUserAuth: 'SET_USER_AUTH',
   setRegAuthError: 'SET_REG_AUTH_ERROR',
+  getUsers: 'GET_USERS',
   outPutUser: 'OUT_PUT_USER'
 };
 
@@ -51,6 +53,15 @@ export const SetRegAuthErrorAction = (regAuthError: boolean) => ({
   type: UserInfoActionsType.setRegAuthError,
   payload: regAuthError,
 });
+
+export const GetUsersAction = () => async (dispatch: any) => {
+  const users = await makeRequest({ url: '/character' });
+
+  dispatch({
+    type: UserInfoActionsType.getUsers,
+    payload: users,
+  });
+};
 
 export const OutPutUserAction = () => ({
   type: UserInfoActionsType.outPutUser,

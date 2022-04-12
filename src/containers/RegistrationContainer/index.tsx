@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import RegistrationPage from '../../components/pages/RegistrationPage';
-import { SetUserAuthAction, SetUserRegisteredAction } from '../../store/UserStore/actions';
-import { GetUserAge, GetUserEmail, GetUserLastName, GetUserName, GetUserPassword, GetUserRegistered } from '../../store/UserStore/selectors';
+import { SetUserAuthAction, SetUserRegisteredAction } from '../../store/users/actions';
+import { GetUserAge, GetUserEmail, GetUserLastName, GetUserName, GetUserPassword, GetUserRegistered } from '../../store/users/selectors';
 
 const RegistrationContainer = () => {
   const userName = useSelector(GetUserName);
