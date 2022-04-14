@@ -15,17 +15,14 @@ type AuthPageType = {
 const AuthPage = (props: AuthPageType) => {
   const { handler } = props;
 
-  const [currentEmail, setCurrentEmail] = useState('');
-  const [currentPassword, setCurrentPassword] = useState('');
-
   const userEmail = useSelector(GetUserEmail);
   const userPassword = useSelector(GetUserPassword);
 
   return (
     <Form title="Hello, world!" supTitle="Пройдите авторизацию">
       <ButtonAuthReg />
-      <Input id="email" placeholder="Email" value={userEmail} type="text" />
-      <PasswordInput id="password" placeholder="Пароль" value={userPassword} type="password" />
+      <Input id="email" placeholder="Email" type="text" />
+      <PasswordInput id="password" placeholder="Пароль" type="password" />
       <PasswordRecoveryLink title="Забыли пароль?" />
       <Button title="Войти" handler={handler} width="100%" height="48px" background={null} textColor={null} fontSize={null} fontWeight={null} margin="24px 0 0 0" borderRadius={null} />
     </Form>

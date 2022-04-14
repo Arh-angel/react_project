@@ -8,7 +8,6 @@ const initialState: UserInfoReducerType = {
   email: '',
   password: '',
   userRegistered: false,
-  userAuth: false,
   regAuthError: true,
   data: []
 };
@@ -45,11 +44,6 @@ const userInfoReducer = (state = initialState, action: ActionType) => {
         ...state,
         userRegistered: action.payload
       };
-    case UserInfoActionsType.setUserAuth:
-      return {
-        ...state,
-        userAuth: action.payload
-      };
     case UserInfoActionsType.setRegAuthError:
       return {
         ...state,
@@ -59,10 +53,6 @@ const userInfoReducer = (state = initialState, action: ActionType) => {
       return {
         ...state,
         data: action.payload
-      };
-    case UserInfoActionsType.outPutUser:
-      return {
-        ...initialState
       };
     default:
       return state;

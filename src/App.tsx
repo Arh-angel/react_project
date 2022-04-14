@@ -15,11 +15,14 @@ import TechniqueContainer from './containers/TechniqueContainer';
 import RegistrationContainer from './containers/RegistrationContainer';
 import AuthContainer from './containers/AuthContainer';
 import NotFoundContainer from './containers/NotFoundContainer';
+import Pers from './components/pages/Pers';
+import PersContainer from './containers/PersContainer';
 
 const App = () => (
   <Routes>
     <Route path="/" element={<PageWrapper />}>
       <Route index element={<AuthHOC><MainContainer /></AuthHOC>} />
+      <Route path="/:name" element={<AuthHOC><PersContainer /></AuthHOC>} />
       <Route path="cars" element={<AuthHOC><CarsContainer /></AuthHOC>} />
       <Route path="accessories" element={<AuthHOC><AccessoriesContainer /></AuthHOC>} />
       <Route path="furniture" element={<AuthHOC><FurniturerContainer /></AuthHOC>} />

@@ -2,16 +2,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { GetUserName } from '../../store/users/selectors';
+import { GetUserLogin } from '../../store/auth/selectors';
+import { GetUserRegistered } from '../../store/users/selectors';
 
 const AuthHOC: React.FC = ({ children }) => {
-  const isAuth = useSelector(GetUserName);
+  const userReg = useSelector(GetUserRegistered);
+  const userLogin = useSelector(GetUserLogin);
 
-  if (isAuth) {
+  if (userLogin) {
     return <>{children}</>;
   }
 
-  return <Navigate to="/reg" />;
+  return <Navigate to="/auth" />;
 };
 
 export default AuthHOC;

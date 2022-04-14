@@ -1,24 +1,26 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetRegAuthErrorAction, SetUserAgeAction, SetUserEmailAction, SetUserLastNameAction, SetUserNameAction } from '../../../../store/users/actions';
-import { GetRegAuthError, GetUserAuth, GetUserEmail, GetUserRegistered } from '../../../../store/users/selectors';
+import { AuthErrorAction, SetAuthEmailAction } from '../../../../store/auth/actions';
+import { GetUserLogin } from '../../../../store/auth/selectors';
+import { SetUserAgeAction, SetUserEmailAction, SetUserLastNameAction, SetUserNameAction } from '../../../../store/users/actions';
+import { GetUserEmail, GetUserRegistered } from '../../../../store/users/selectors';
 import style from './Input.module.scss';
 
 type InputPropsType = {
   id: string;
   placeholder: string;
-  value: string | number | readonly string[] | undefined,
   type: 'text' | 'password';
 };
 
 const Input = ({
-  id, placeholder, value, type = 'text'
+  id, placeholder, type = 'text'
 }: InputPropsType) => {
   const [currentValue, setCurrentValue] = useState('');
+
   const userRegistered = useSelector(GetUserRegistered);
-  const userAuth = useSelector(GetUserAuth);
+  const userLogin = useSelector(GetUserLogin);
   const userEmail = useSelector(GetUserEmail);
-  const regAuthError = useSelector(GetRegAuthError);
+
   const dispatch = useDispatch();
 
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -37,16 +39,19 @@ const Input = ({
         dispatch(SetUserEmailAction(currentValue));
       }
     }
-    if (!userAuth) {
-      if (currentValue === userEmail) {
-        dispatch(SetRegAuthErrorAction(false));
+    if (!userLogin) {
+      if (id === 'name') {
+        if (currentValue === userEmail) {
+          dispatch(AuthErrorAction(false));
+          dispatch(SetAuthEmailAction(currentValue));
+        }
       }
     }
   }, [currentValue]);
 
   return (
     <label className={style.wrapper} htmlFor={id}>
-      <input id={id} onChange={handler} value={value} type={type} />
+      <input id={id} onChange={handler} type={type} />
       <span>{placeholder}</span>
     </label>
   );

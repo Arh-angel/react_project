@@ -4,36 +4,37 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Header.module.scss';
 
-import Form from '../Form';
-import Input from '../Form/Input';
 import Button from '../Button';
 import SearchInput from '../Form/SearchInput';
-import { GetUserAuth } from '../../../store/users/selectors';
-import { SetUserAuthAction } from '../../../store/users/actions';
+import { GetAuthError, GetUserLogin } from '../../../store/auth/selectors';
+import { AuthErrorAction, SetAuthEmailAction, SetAuthPasswordAction, UserLoginAction, UserLogoutAction } from '../../../store/auth/actions';
+import { GetUserRegistered } from '../../../store/users/selectors';
 
 const Header = () => {
   const [searchItem, setSearchItem] = useState('');
   const [logInLogOut, setLogInLogOut] = useState('');
   const [path, setPath] = useState('');
 
-  const userAuth = useSelector(GetUserAuth);
+  const userLogin = useSelector(GetUserLogin);
+  const userReg = useSelector(GetUserRegistered);
+  const authError = useSelector(GetAuthError);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (userAuth) {
+    if (userLogin) {
       setLogInLogOut('Выйти');
       setPath('/auth');
     } else {
       setLogInLogOut('Войти');
       setPath('/');
     }
-  }, [userAuth]);
+  }, [userLogin]);
 
   const handler = () => {
-    if (userAuth) {
-      dispatch(SetUserAuthAction(false));
+    if (userLogin) {
+      dispatch(UserLogoutAction());
     } else {
-      dispatch(SetUserAuthAction(true));
+      dispatch(UserLoginAction());
     }
   };
 

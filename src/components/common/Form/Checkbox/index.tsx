@@ -9,7 +9,7 @@ const Checkbox = () => {
   return (
     <div className={style.wrapper}>
       <label className={style.section__checkbox}>
-        <input type="checkbox" checked={checkedValue} onClick={() => setCheckedValue(!checkedValue)} />
+        <input type="checkbox" checked={checkedValue} onChange={() => {}} onClick={() => setCheckedValue(!checkedValue)} />
         <span className={style.checkmark} />
       </label>
       <div className={style.text__wrapper}>

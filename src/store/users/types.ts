@@ -6,7 +6,6 @@ export type UserInfoReducerType = {
   email: string,
   password: string,
   userRegistered: boolean,
-  userAuth: boolean,
   regAuthError: boolean,
   data: any[]
 };
@@ -18,9 +17,7 @@ export type UserInfoActionsTypeType = {
   setUserEmail: 'SET_USER_EMAIL',
   setUserPassword: 'SET_USER_PASSWORD',
   setUserRegistered: 'SET_USER_REGISTERED',
-  setUserAuth: 'SET_USER_AUTH',
   setRegAuthError: 'SET_REG_AUTH_ERROR',
-  outPutUser: 'OUT_PUT_USER'
   getUsers: 'GET_USERS'
 };
 
@@ -54,18 +51,9 @@ export type SetUserRegisteredActionsType = {
   payload: boolean
 };
 
-export type SetUserAuthActionsType = {
-  type: UserInfoActionsTypeType['setUserAuth'],
-  payload: boolean
-};
-
 export type SetRegAuthErrorActionsType = {
   type: UserInfoActionsTypeType['setRegAuthError'],
   payload: boolean
-};
-
-export type OutPutUserActionType = {
-  type: UserInfoActionsTypeType['outPutUser'],
 };
 
 export type getUsersActionType = {
@@ -73,4 +61,4 @@ export type getUsersActionType = {
   payload: any[]
 };
 
-export type ActionType = SetUserNameActionsType | SetUserLastNameActionsType | SetUserAgeActionsType | SetUserEmailActionsType | SetUserPasswordActionsType | SetUserRegisteredActionsType | SetUserAuthActionsType | SetRegAuthErrorActionsType | getUsersActionType | OutPutUserActionType;
+export type ActionType = SetUserNameActionsType | SetUserLastNameActionsType | SetUserAgeActionsType | SetUserEmailActionsType | SetUserPasswordActionsType | SetUserRegisteredActionsType | SetRegAuthErrorActionsType | getUsersActionType;

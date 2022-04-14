@@ -1,26 +1,27 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SetRegAuthErrorAction, SetUserPasswordAction } from '../../../../../store/users/actions';
-import { GetRegAuthError, GetUserAuth, GetUserPassword, GetUserRegistered } from '../../../../../store/users/selectors';
+import { AuthErrorAction } from '../../../../../store/auth/actions';
+import { GetUserLogin } from '../../../../../store/auth/selectors';
+import { SetUserPasswordAction } from '../../../../../store/users/actions';
+import { GetRegAuthError, GetUserPassword, GetUserRegistered } from '../../../../../store/users/selectors';
 import style from './PasswordInput.module.scss';
 
 type InputPropsType = {
   id: string;
   placeholder: string;
-  value: string | number | readonly string[] | undefined,
   type: 'text' | 'password';
 };
 
 const PasswordInput = ({
-  id, placeholder, value, type = 'text'
+  id, placeholder, type = 'password'
 }: InputPropsType) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTypeInput, setCurrentTypeInput] = useState('');
   const [currentValue, setCurrentValue] = useState('');
 
   const userRegistered = useSelector(GetUserRegistered);
-  const userAuth = useSelector(GetUserAuth);
+  const userLogin = useSelector(GetUserLogin);
   const userPassword = useSelector(GetUserPassword);
   const regAuthError = useSelector(GetRegAuthError);
   const dispatch = useDispatch();
@@ -45,16 +46,16 @@ const PasswordInput = ({
     if (!userRegistered) {
       dispatch(SetUserPasswordAction(currentValue));
     }
-    if (!userAuth) {
+    if (!userLogin) {
       if (currentValue === userPassword) {
-        dispatch(SetRegAuthErrorAction(false));
+        dispatch(AuthErrorAction(false));
       }
     }
   }, [currentValue]);
 
   return (
     <label className={style.wrapper} htmlFor={id}>
-      <input id={id} onChange={handler} value={value} type={currentTypeInput} />
+      <input id={id} onChange={handler} type={currentTypeInput} />
       <span>{placeholder}</span>
       <button type="button" onClick={() => setIsVisible(!isVisible)}>
         {
