@@ -9,7 +9,9 @@ const initialState: UserInfoReducerType = {
   password: '',
   userRegistered: false,
   regAuthError: true,
-  data: []
+  data: { info: {}, results: [] },
+  oneUser: {},
+  currentPage: ''
 };
 
 const userInfoReducer = (state = initialState, action: ActionType) => {
@@ -53,6 +55,21 @@ const userInfoReducer = (state = initialState, action: ActionType) => {
       return {
         ...state,
         data: action.payload
+      };
+    case UserInfoActionsType.getOneUser:
+      return {
+        ...state,
+        oneUser: action.payload
+      };
+    case UserInfoActionsType.clearOneUser:
+      return {
+        ...state,
+        oneUser: {}
+      };
+    case UserInfoActionsType.currentPage:
+      return {
+        ...state,
+        currentPage: action.payload
       };
     default:
       return state;

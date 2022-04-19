@@ -8,3 +8,5 @@ export const GetUserPassword = (state: RootReducerType) => state.users.password;
 export const GetUserRegistered = (state: RootReducerType) => state.users.userRegistered;
 export const GetRegAuthError = (state: RootReducerType) => state.users.regAuthError;
 export const GetUsers = (state: RootReducerType) => state.users.data;
+export const GetOneUser = (state: RootReducerType) => state.users.oneUser;
+export const GetCurrentPage = (state: RootReducerType) => state.users.currentPage;

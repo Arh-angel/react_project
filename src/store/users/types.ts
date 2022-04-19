@@ -7,7 +7,9 @@ export type UserInfoReducerType = {
   password: string,
   userRegistered: boolean,
   regAuthError: boolean,
-  data: any[]
+  data: {info: any, results: any},
+  oneUser: {}
+  currentPage: string
 };
 
 export type UserInfoActionsTypeType = {
@@ -18,7 +20,10 @@ export type UserInfoActionsTypeType = {
   setUserPassword: 'SET_USER_PASSWORD',
   setUserRegistered: 'SET_USER_REGISTERED',
   setRegAuthError: 'SET_REG_AUTH_ERROR',
-  getUsers: 'GET_USERS'
+  getUsers: 'GET_USERS',
+  getOneUser: 'GET_ONE_USER',
+  clearOneUser: 'CLEAR_ONE_USER',
+  currentPage: 'CURRENT_PAGE'
 };
 
 export type SetUserNameActionsType = {
@@ -61,4 +66,18 @@ export type getUsersActionType = {
   payload: any[]
 };
 
-export type ActionType = SetUserNameActionsType | SetUserLastNameActionsType | SetUserAgeActionsType | SetUserEmailActionsType | SetUserPasswordActionsType | SetUserRegisteredActionsType | SetRegAuthErrorActionsType | getUsersActionType;
+export type getOneUsersActionType = {
+  type: UserInfoActionsTypeType['getOneUser'],
+  payload: {}
+};
+
+export type ClearOneUsersActionType = {
+  type: UserInfoActionsTypeType['clearOneUser'],
+};
+
+export type CurrentPageActionType = {
+  type: UserInfoActionsTypeType['currentPage'],
+  payload: string
+};
+
+export type ActionType = SetUserNameActionsType | SetUserLastNameActionsType | SetUserAgeActionsType | SetUserEmailActionsType | SetUserPasswordActionsType | SetUserRegisteredActionsType | SetRegAuthErrorActionsType | getUsersActionType | getOneUsersActionType | ClearOneUsersActionType | CurrentPageActionType;

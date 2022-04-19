@@ -1,23 +1,26 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import Pers from '../../components/pages/Pers';
-import { GetUsersAction } from '../../store/users/actions';
-import { GetUsers } from '../../store/users/selectors';
+import { ClearOneUserAction, GetOneUserAction } from '../../store/users/actions';
+import { GetCurrentPage, GetOneUser } from '../../store/users/selectors';
 
 const PersContainer = () => {
-  const { name } = useParams();
+  const navigate = useNavigate();
+  const params = useParams();
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(GetUsersAction());
-  }, []);
+    dispatch(GetOneUserAction(`${params.id}`));
 
-  const usersData = useSelector(GetUsers);
+    return () => { dispatch(ClearOneUserAction()); };
+  }, [params.id]);
 
-  const user = usersData.find((el) => el.name === name);
+  const currentPage = useSelector(GetCurrentPage);
+  const user = useSelector(GetOneUser);
 
-  return <Pers userInfo={user} />;
+  return <Pers userInfo={user} currentPage={currentPage} />;
 };
 
 export default PersContainer;

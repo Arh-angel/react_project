@@ -22,7 +22,7 @@ const App = () => (
   <Routes>
     <Route path="/" element={<PageWrapper />}>
       <Route index element={<AuthHOC><MainContainer /></AuthHOC>} />
-      <Route path="/:name" element={<AuthHOC><PersContainer /></AuthHOC>} />
+      <Route path="/:id" element={<AuthHOC><PersContainer /></AuthHOC>} />
       <Route path="cars" element={<AuthHOC><CarsContainer /></AuthHOC>} />
       <Route path="accessories" element={<AuthHOC><AccessoriesContainer /></AuthHOC>} />
       <Route path="furniture" element={<AuthHOC><FurniturerContainer /></AuthHOC>} />
