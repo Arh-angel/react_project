@@ -9,7 +9,7 @@ const AuthHOC: React.FC = ({ children }) => {
   const userReg = useSelector(GetUserRegistered);
   const userLogin = useSelector(GetUserLogin);
 
-  if (userLogin) {
+  if (true) {
     return <>{children}</>;
   }
 
