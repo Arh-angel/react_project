@@ -1,15 +1,17 @@
 @import 'normalize';
 @import 'vars';
 
-body {
-  color: $text-color;
-  font-family: $text;
-  font-size: $text-size;
-}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+body {
+  color: $text-color;
+  font-family: $text;
+  font-size: $text-size;
+  overflow-x: hidden;
 }
 h1,
 h2,
@@ -34,7 +36,7 @@ a {
   text-decoration: none;
 }
 .container {
-  max-width: calc(288px + (1280 - 288) * ((100vw - 320px) / (1920 - 320)));
+  max-width: calc(808px + (1280 - 808) * ((100vw - 768px) / (1920 - 768)));
   height: 100%;
   margin: auto;
 }

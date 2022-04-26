@@ -3,7 +3,7 @@
 
 .banner {
   width: 100%;
-  height: calc(260px + (544 - 260) * ((100vw - 320px) / (1920 - 320)));
+  // height: calc(260px + (544 - 260) * ((100vw - 320px) / (1920 - 320)));
   background-color: $second-main-color;
 
    & > .container > .wrapper {
@@ -38,11 +38,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 50px;
+      margin-top: calc(0px + (100 - 0) * ((100vw - 768px) / (1920 - 768)));
+      width: 100%;
       
       & > img {
         display: block;
-        width: calc(132px + (717 - 132) * ((100vw - 320px) / (1920 - 320)));
+        // width: calc(132px + (717 - 132) * ((100vw - 320px) / (1920 - 320)));
+        width: 100%;
       }
     }
   }
