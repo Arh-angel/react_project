@@ -10,10 +10,11 @@ import { GetAuthError, GetUserLogin } from '../../../store/auth/selectors';
 import { AuthErrorAction, SetAuthEmailAction, SetAuthPasswordAction, UserLoginAction, UserLogoutAction } from '../../../store/auth/actions';
 import { GetUserRegistered } from '../../../store/users/selectors';
 import Burger from '../Burger';
+import DropDownMenu from '../DropDownMenu';
 
 const Header = () => {
   const [searchItem, setSearchItem] = useState('');
-  const [logInLogOut, setLogInLogOut] = useState('');
+  const [logInLogOut, setLogInLogOut] = useState(false);
   const [path, setPath] = useState('');
 
   const userLogin = useSelector(GetUserLogin);
@@ -23,10 +24,10 @@ const Header = () => {
 
   useEffect(() => {
     if (userLogin) {
-      setLogInLogOut('Выйти');
+      setLogInLogOut(true);
       setPath('/auth');
     } else {
-      setLogInLogOut('Войти');
+      setLogInLogOut(false);
       setPath('/');
     }
   }, [userLogin]);
@@ -80,7 +81,7 @@ const Header = () => {
                 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#2a2f3778" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
-            <Link className={style.authLink} onClick={handler} to={path}>{logInLogOut}</Link>
+            <Link className={style.authLink} onClick={handler} to={path}>{logInLogOut ? <DropDownMenu /> : 'Войти'}</Link>
           </div>
           <div className={style.lockBurger}>
             <Link to="/basket" className={style.lock}>
