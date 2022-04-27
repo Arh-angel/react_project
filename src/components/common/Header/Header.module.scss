@@ -22,7 +22,7 @@
       margin-left: calc(20px + (105 - 20) * ((100vw - 768px) / (1920 - 768)));
 
       & > .submitAdvertisement {
-        margin-right: 56px;
+        margin-right: calc(0px + (56 - 0) * ((100vw - 768px) / (1920 - 768)));
 
         @media(max-width: 768px) {
           display: none;
