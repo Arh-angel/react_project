@@ -9,10 +9,13 @@ import PasswordInput from '../../common/Form/Input/PasswordInput';
 
 type RegistrationPageType = {
   handler: () => void | null;
+  trackPas: (value: string) => void;
+  trackRepeatPas: (value: string) => void;
+  pasMatch: boolean
 }
 
 const RegistrationPage = (props: RegistrationPageType) => {
-  const { handler } = props;
+  const { handler, trackPas, trackRepeatPas, pasMatch } = props;
 
   return (
     <Form title="Hello, world!" supTitle="Создайте аккаунт">
@@ -20,8 +23,8 @@ const RegistrationPage = (props: RegistrationPageType) => {
       <Input id="name" placeholder="Имя" type="text" />
       <Input id="lastName" placeholder="Фамилия" type="text" />
       <Input id="email" placeholder="Email" type="text" />
-      <PasswordInput id="password" placeholder="Пароль" type="password" />
-      <PasswordInput id="repeatPassword" placeholder="Повторите пароль" type="password" />
+      <PasswordInput id="password" placeholder="Пароль" type="password" trackPas={trackPas} trackRepeatPas={trackRepeatPas} pasMatch={pasMatch} />
+      <PasswordInput id="repeatPassword" placeholder="Повторите пароль" type="password" trackPas={trackPas} trackRepeatPas={trackRepeatPas} pasMatch={pasMatch} />
       <Checkbox />
       <Button title="Создать аккаунт" handler={handler} width="100%" height="48px" background={null} textColor={null} fontSize={null} fontWeight={null} margin="24px 0 0 0" borderRadius={null} />
     </Form>

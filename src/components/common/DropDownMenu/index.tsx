@@ -40,7 +40,7 @@ const DropDownMenu = () => {
             </Link>
           </li>
           {isAdmin ? <li className={style.dropDownMenuitem}>
-            <Link to="/myAds">
+            <Link to="/adminPanel">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M8.33333 2.5H2.5V8.33333H8.33333V2.5Z" stroke="#2A2F37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 <path d="M17.5001 2.5H11.6667V8.33333H17.5001V2.5Z" stroke="#2A2F37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

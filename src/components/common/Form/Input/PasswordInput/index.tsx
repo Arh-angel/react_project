@@ -11,19 +11,23 @@ type InputPropsType = {
   id: string;
   placeholder: string;
   type: 'text' | 'password';
+  trackPas: (value: string) => void | null;
+  trackRepeatPas: (value: string) => void | null
+  pasMatch: boolean | null
 };
 
 const PasswordInput = ({
-  id, placeholder, type = 'password'
+  id, placeholder, type = 'password', trackPas, trackRepeatPas, pasMatch
 }: InputPropsType) => {
+  const regPas = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
   const [isVisible, setIsVisible] = useState(false);
   const [currentTypeInput, setCurrentTypeInput] = useState('');
   const [currentValue, setCurrentValue] = useState('');
+  const [valid, setValid] = useState(true);
 
   const userRegistered = useSelector(GetUserRegistered);
   const userLogin = useSelector(GetUserLogin);
   const userPassword = useSelector(GetUserPassword);
-  const regAuthError = useSelector(GetRegAuthError);
   const dispatch = useDispatch();
 
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +39,29 @@ const PasswordInput = ({
   }, []);
 
   useEffect(() => {
+    if (id === 'password') {
+      trackPas(currentValue);
+    } else if (id === 'repeatPassword') {
+      trackRepeatPas(currentValue);
+    }
+  }, [currentValue]);
+
+  useEffect(() => {
+    if (currentValue.length > 0) {
+      console.log('pasMatch', pasMatch);
+      if (!currentValue.match(regPas) && pasMatch) {
+        console.log('Password');
+        setValid(false);
+        dispatch(AuthErrorAction(true));
+      } else {
+        console.log('EndPoint');
+        setValid(true);
+        dispatch(AuthErrorAction(false));
+      }
+    }
+  }, [currentValue]);
+
+  useEffect(() => {
     if (isVisible) {
       setCurrentTypeInput('text');
     } else {
@@ -44,18 +71,22 @@ const PasswordInput = ({
 
   useEffect(() => {
     if (!userRegistered) {
-      dispatch(SetUserPasswordAction(currentValue));
+      if (valid) {
+        dispatch(SetUserPasswordAction(currentValue));
+      }
     }
     if (!userLogin) {
-      if (currentValue === userPassword) {
-        dispatch(AuthErrorAction(false));
+      if (valid) {
+        if (currentValue === userPassword) {
+          dispatch(AuthErrorAction(false));
+        }
       }
     }
   }, [currentValue]);
 
   return (
     <label className={style.wrapper} htmlFor={id}>
-      <input id={id} onChange={handler} type={currentTypeInput} />
+      <input id={id} onChange={handler} type={currentTypeInput} className={!valid || !pasMatch ? style.notValid : ''} />
       <span>{placeholder}</span>
       <button type="button" onClick={() => setIsVisible(!isVisible)}>
         {

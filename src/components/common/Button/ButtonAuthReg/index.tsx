@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import style from './ButtonAuthReg.module.scss';
 
 const ButtonAuthReg = () => {
-  console.log('regauth');
+  console.log('Кнопка регистрации и авторизации');
   return (
     <div className={style.wrapper}>
       <NavLink to="/reg" className={({ isActive }) => `${isActive ? style.active : style.reg}`}>Регистрая</NavLink>
