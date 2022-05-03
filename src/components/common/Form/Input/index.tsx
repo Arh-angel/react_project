@@ -73,8 +73,6 @@ const Input = ({
     }
   }, [currentValue]);
 
-  console.log(valid);
-
   return (
     <label className={style.wrapper} htmlFor={id}>
       <input id={id} onChange={handler} type={type} className={!valid ? style.notValid : ''} />

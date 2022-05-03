@@ -48,13 +48,10 @@ const PasswordInput = ({
 
   useEffect(() => {
     if (currentValue.length > 0) {
-      console.log('pasMatch', pasMatch);
-      if (!currentValue.match(regPas) && pasMatch) {
-        console.log('Password');
+      if (!currentValue.match(regPas) || (!pasMatch && pasMatch !== null)) {
         setValid(false);
         dispatch(AuthErrorAction(true));
       } else {
-        console.log('EndPoint');
         setValid(true);
         dispatch(AuthErrorAction(false));
       }
@@ -84,9 +81,17 @@ const PasswordInput = ({
     }
   }, [currentValue]);
 
+  const createClassName = () => {
+    if (pasMatch === null) {
+      console.log(valid);
+      return !valid ? style.notValid : '';
+    }
+    return !valid || !pasMatch ? style.notValid : '';
+  };
+
   return (
     <label className={style.wrapper} htmlFor={id}>
-      <input id={id} onChange={handler} type={currentTypeInput} className={!valid || !pasMatch ? style.notValid : ''} />
+      <input id={id} onChange={handler} type={currentTypeInput} className={createClassName()} />
       <span>{placeholder}</span>
       <button type="button" onClick={() => setIsVisible(!isVisible)}>
         {

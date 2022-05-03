@@ -24,7 +24,7 @@ const AuthPage = (props: AuthPageType) => {
       <Input id="email" placeholder="Email" type="text" />
       <PasswordInput id="password" placeholder="Пароль" type="password" trackPas={() => null} trackRepeatPas={() => null} pasMatch={null} />
       <PasswordRecoveryLink title="Забыли пароль?" />
-      <Button title="Войти" handler={handler} width="100%" height="48px" background={null} textColor={null} fontSize={null} fontWeight={null} margin="24px 0 0 0" borderRadius={null} />
+      <Button title="Войти" handler={handler} width="100%" height="48px" background={null} textColor={null} fontSize={null} fontWeight={null} margin="24px 0 0 0" borderRadius={null} icon={null} />
     </Form>
   );
 };

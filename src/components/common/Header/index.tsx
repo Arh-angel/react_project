@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import Burger from '../Burger';
 import DropDownMenu from '../DropDownMenu';
 
 const Header = () => {
+  const [admin, setAdmin] = useState(true);
   const [searchItem, setSearchItem] = useState('');
   const [logInLogOut, setLogInLogOut] = useState(false);
   const [path, setPath] = useState('');
@@ -58,7 +60,7 @@ const Header = () => {
             </defs>
           </svg>
         </Link>
-        <div className={style.searchProductInput}>
+        {!admin ? <div className={style.searchProductInput}>
           <SearchInput
             id="search"
             placeholder={
@@ -68,12 +70,12 @@ const Header = () => {
                   <path d="M20.9999 20.9999L16.6499 16.6499" stroke="#2A2F37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </g>
               </svg>
-            }
+                      }
             type="text" />
-          <Button title="Искать" handler={() => {}} width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" />
-        </div>
+          <Button title="Искать" handler={() => { }} width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" icon={null} />
+                  </div> : ''}
         <div className={style.wrapperBtnAccaunt}>
-          <Link to="/searchresults" className={style.submitAdvertisement}><Button title="Подать обьявление" handler={() => {}} width="calc(170px + (180 - 170) * ((100vw - 768px) / (1920 - 768)))" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} /></Link>
+          {!admin ? <Link to="/searchresults" className={style.submitAdvertisement}><Button title="Подать обьявление" handler={() => { }} width="calc(170px + (180 - 170) * ((100vw - 768px) / (1920 - 768)))" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} icon={null} /></Link> : '' }
           <div className={style.profileContainer}>
             <Link className={style.authLink} onClick={handler} to={path}>{logInLogOut ? <DropDownMenu /> : 'Войти'}</Link>
           </div>
