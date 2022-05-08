@@ -1,22 +1,38 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import style from './Checkbox.module.scss';
 
-const Checkbox = () => {
-  const [checkedValue, setCheckedValue] = useState(true);
+type CheckboxType = {
+  text: string | null,
+  textLink: string | null,
+  checked: boolean
+}
+
+const Checkbox = (props: CheckboxType) => {
+  const { text, textLink, checked } = props;
+  const [checkedValue, setCheckedValue] = useState(false);
+
+  useEffect(() => {
+    setCheckedValue(checked);
+  }, []);
+
+  const handler = () => {
+    setCheckedValue(!checkedValue);
+  };
+
   return (
     <div className={style.wrapper}>
       <label className={style.section__checkbox}>
-        <input type="checkbox" checked={checkedValue} onChange={() => {}} onClick={() => setCheckedValue(!checkedValue)} />
+        <input type="checkbox" checked={checkedValue} onChange={() => {}} onClick={handler} />
         <span className={style.checkmark} />
       </label>
       <div className={style.text__wrapper}>
         <p>
-          Принимаю условия
+          {text}
         </p>
-        <Link to="/agreement" className={style.link_agreement}>Пользовательского соглашения</Link>
+        <Link to="/agreement" className={style.link_agreement}>{textLink}</Link>
       </div>
     </div>
   );

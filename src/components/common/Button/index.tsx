@@ -4,10 +4,10 @@ import { GetUserName, GetUserPassword } from '../../../store/users/selectors';
 import style from './Button.module.scss';
 
 type ButtonPropsType = {
-  title: string;
+  title: string | null;
   handler: () => void | null;
-  width: string;
-  height: string;
+  width: string | null;
+  height: string | null;
   background: string | null;
   textColor: string | null;
   fontSize: string | null;

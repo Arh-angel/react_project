@@ -3,7 +3,7 @@ import style from './SearchInput.module.scss';
 
 type InputPropsType = {
   id: string;
-  placeholder: SVGProps<SVGElement>;
+  placeholder: SVGProps<SVGElement> | string;
   type: 'text';
 };
 

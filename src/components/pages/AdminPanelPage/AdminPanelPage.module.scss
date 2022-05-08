@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-top: 40px;
   aside > .adminMenuContainer {
     width: auto;
     height: auto;
@@ -84,4 +85,151 @@
       }
     }
   }
+
+  & > .adminPageAds {
+    width: 100%;
+    margin-left: 40px;
+    margin-bottom: 248px;
+
+    & > .adminPageAdsHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 100%;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #342b2b33;
+      margin-bottom: 24px;
+
+      & > .adminPageAdsHeaderText {
+        & > .adminPageAdsHeaderTitle {
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 32px;
+        }
+        & > .adminPageAdsHeaderSubTitle {
+          line-height: 24px;
+        }
+      }
+      & > button {
+        justify-content: space-between;
+      }
+  }
+  & > .searchContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+
+    & > .searchInput {
+      position: relative;
+      & > input {
+        width:calc(286px + (420 - 286) * ((100vw - 768px) / (1920 - 768)));
+        height: calc(36px + (40 - 36) * ((100vw - 768px) / (1920 - 768)));
+        padding-left: 16px;
+        border: none;
+        
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+      & > .searchInputLoupe {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translate(0, -45%);
+      }
+    }
+    & > .searchBtnWrapper {
+      position: relative;
+
+      & > button {
+        justify-content: space-between;
+      }
+      & > div {
+        position: absolute;
+        top: 48px;
+        right: 16px;
+        z-index: 1;
+        background-color: #FFFFFF;
+      }
+    }
+  }
+  & > .adminPageAboutAds {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.3fr 0.2fr;
+    background-color: #FFFFFF;
+    margin-bottom: 8px;
+
+    & > button {
+      justify-content: flex-start;
+      opacity: .6;
+      line-height: 16px;
+      padding-left: 24px;
+    }
+
+    & > .adminPageAboutAdsTitle {
+      justify-content: flex-start;
+      font-size: 12px;
+      align-self: center;
+      font-weight: 700;
+      color: #1D1D1D;
+      opacity: .6;
+      line-height: 16px;
+    }
+  }
+  & > .adminPageWrapperProductList {
+    width: 100%;
+    background-color: #FFFFFF;
+
+    & > .adminPageProductList {
+
+      & > .adminPageProductItem {
+        display: grid;
+        grid-template-columns: 1fr 0.5fr 0.5fr 0.3fr 0.2fr;
+        align-items: center;
+        height: 80px;
+
+        & > p {
+          font-size: 14px;
+          line-height: 24px;
+
+          &:first-child {
+            padding-left: 24px;
+            font-weight: 700;
+          }
+        }
+
+        & > button {
+          padding: 0;
+          margin-right: 24px;
+          opacity: .4;
+        }
+
+        &:hover {
+          border-radius: 4px;
+          border: 1px solid rgba(72, 119, 242, 0.5);
+          box-shadow: 0 8px 36px 0 rgba(33, 33, 33, 0.06);
+        }
+
+        & > .adminPageProductItemBtnWrapper {
+          position: relative;
+
+          & > button {
+            border-radius: 0;
+            padding: 4px;
+            margin: 0;
+          }
+
+          & > div {
+            position: absolute;
+            right: 0;
+            top: 36px;
+          }
+        }
+      }
+    } 
+  }
+  } 
 }
