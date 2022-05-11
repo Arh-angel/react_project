@@ -1,0 +1,199 @@
+@import '../../../assets/style/main.scss';
+@import '../../../assets/style/vars.scss';
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 40px;
+
+  & > .productEditingWrapper {
+    width: 100%;
+    margin-left: 40px;
+
+    & > button {
+      display: flex;
+      flex-direction: row-reverse;
+      line-height: 24px;
+      padding: 0;
+      margin-bottom: 32px;
+
+      & > svg {
+        margin-right: 8px;
+      } 
+    }
+
+    & > .productEditingHeaderBlock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #FFFFFF;
+      padding: 24px;
+      margin-bottom: 19px;
+      
+      & > .productEditingHeaderBlockTitle {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 24px;
+      }
+    }
+
+    & > .productEditingBlock {
+      padding: 37px 24px;
+      background-color: #FFFFFF;
+
+      & > .productEditingBlockName {
+        margin-bottom: 24px;
+
+        & > p {
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+          color: #2A2F37;
+          opacity: 0.6;
+        }
+
+        & > label {
+          & > input {
+            height: 64px;
+            padding-top: 0;
+            font-size: 16px;
+            font-weight: 400;
+          }
+
+          & > span {
+            font-size: 16px;
+            font-weight: 400;
+            transform: translate(0, -25%);
+            color: #2A2F37;
+          }
+        }
+      }
+
+      & > .productEditingBlockSelectPrice {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        & > .productEditingBlockSelect {
+          width: 50%;
+          margin-right: 24px;
+
+          & > p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 24px;
+            color: #2A2F37;
+            opacity: 0.6;
+          }
+
+          & > div > button {
+            
+          }
+        }
+
+        & > .productEditingBlockPrice {
+          width: 50%;
+
+          & > p {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 24px;
+            color: #2A2F37;
+            opacity: 0.6;
+          }
+
+          & > label > input {
+            height: 64px;
+            width: 100%;
+            padding-top: 0;
+            font-size: 16px;
+            font-weight: 400;
+          }
+        }
+      }
+      & > .productEditingBlockPhone {
+        width: 50%;
+        padding-right: 12px;
+        margin-bottom: 24px;
+
+        & > p {
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+          color: #2A2F37;
+          opacity: 0.6;
+        }
+
+        & > label > input {
+          height: 64px;
+          width: 100%;
+          padding-top: 0;
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+      & > .productEditingBlockDescription {
+        width: 100%;
+        margin-bottom: 24px;
+
+        & > p {
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+          color: #2A2F37;
+          opacity: 0.6;
+        }
+        & > textarea {
+          height: 128px;
+          width: 100%;
+          padding: 20px 24px;
+          font-size: 16px;
+          font-weight: 400;
+          resize: none;
+          border-radius: 4px; 
+          border: 1px solid rgba(42, 47, 55, 0.08);
+          color: $text-color-lite-grey;
+
+          &:focus {
+            border-bottom: 2px solid $sub-color-two;
+            outline: none;
+          }
+        }
+      }
+      & > .productEditingBlockAddFile {
+        width: 100%;
+        margin-bottom: 24px;
+
+        & > p {
+          margin-bottom: 8px;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 24px;
+          color: #2A2F37;
+          opacity: 0.6;
+        }
+
+        & > label > input {
+          height: 64px;
+          width: 100%;
+          padding-top: 0;
+          font-size: 16px;
+          font-weight: 400;
+          color: $text-color-lite-grey;
+
+          & > button {
+            background-color: #FFFFFF;
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -8,8 +8,8 @@ import style from './Input.module.scss';
 
 type InputPropsType = {
   id: string;
-  placeholder: string;
-  type: 'text' | 'password';
+  placeholder: string | null;
+  type: 'text' | 'password' | 'tel' | 'file';
 };
 
 const Input = ({
