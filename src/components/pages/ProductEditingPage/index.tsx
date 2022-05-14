@@ -1,14 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
-import React from 'react';
+import { Radio } from 'antd';
+import React, { useState } from 'react';
 import AdminMenu from '../../common/AdminMenu';
 import Button from '../../common/Button';
 import Input from '../../common/Form/Input';
 import Select from '../../common/Form/Select';
 
+import 'antd/dist/antd.css';
 import style from './ProductEditingPage.module.scss';
 
 const ProductEditingPage = () => {
+  const [isAdmin, setIsAdmin] = useState(false);
   console.log('product editing');
 
   return (
@@ -48,9 +51,15 @@ const ProductEditingPage = () => {
               <Input id="price" placeholder="15000" type="text" />
             </div>
           </div>
-          <div className={style.productEditingBlockPhone}>
-            <p>Телефон</p>
-            <Input id="price" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _" type="tel" />
+          <div className={style.productEditingBlockDatePhone}>
+            {isAdmin ? <div className={style.productEditingBlockDate}>
+              <p>Дата публикации</p>
+              <Input id="price" placeholder="12.04.2022" type="text" />
+                       </div> : ''}
+            <div className={style.productEditingBlockPhone}>
+              <p>Телефон</p>
+              <Input id="price" placeholder="+7 (_ _ _) _ _ _ - _ _ - _ _" type="tel" />
+            </div>
           </div>
           <div className={style.productEditingBlockDescription}>
             <p>Описание</p>
@@ -59,6 +68,34 @@ const ProductEditingPage = () => {
           <div className={style.productEditingBlockAddFile}>
             <p>Фотография</p>
             <Input id="foto" placeholder={null} type="file" />
+          </div>
+          <div className={style.productEditingBlockLocation}>
+            <p>Местоположение</p>
+            <Input id="location" placeholder="Введите адрес" type="text" />
+          </div>
+          <div className={style.productEditingBlockMap}>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25037.141751332634!2d43.95456789538833!3d56.312718334544094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1634754578909!5m2!1sru!2sru" width="100%" height="457" allowFullScreen loading="lazy" title="Map" />
+          </div>
+          <div className={style.productEditingBlockPublication}>
+            <p>Публикация</p>
+            <div className={style.productEditingBlockPublicationBtn}>
+              <Radio.Group name="radiogroup" defaultValue={1} className={style.productEditingBlockBtn}>
+                <Radio value={1}>Показать</Radio>
+                <Radio value={2}>Скрыть</Radio>
+              </Radio.Group>
+              <Button
+                title="Сбросить выбор"
+                handler={() => null}
+                width="auto"
+                height={null}
+                background="transparent"
+                textColor="#2A2F37"
+                fontSize="16px"
+                fontWeight="400"
+                margin={null}
+                borderRadius={null}
+                icon={null} />
+            </div>
           </div>
         </div>
       </div>
