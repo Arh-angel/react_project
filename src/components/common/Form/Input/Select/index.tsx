@@ -1,10 +1,16 @@
 /* eslint-disable react/jsx-indent */
 import React, { useState } from 'react';
-import Button from '../../Button';
+import Button from '../../../Button';
 
 import style from './Select.module.scss';
 
-const Select = () => {
+type SelectPropsType = {
+  title: string
+}
+
+const Select = (props: SelectPropsType) => {
+  const { title } = props;
+
   const [openSelect, setOpenSelect] = useState(false);
 
   const handlerOpenSelect = () => {
@@ -13,6 +19,7 @@ const Select = () => {
 
   return (
     <div className={style.container}>
+      <p>{title}</p>
       <Button
         title="Автомобили"
         handler={handlerOpenSelect}

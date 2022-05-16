@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Button from '../Button';
-import Checkbox from '../Form/Checkbox';
+import Checkbox from '../Form/Input/Checkbox';
 
 import style from './Filter.module.scss';
 

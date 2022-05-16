@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import style from './Header.module.scss';
 
 import Button from '../Button';
-import SearchInput from '../Form/SearchInput';
+import SearchInput from '../Form/Input/SearchInput';
 import { GetAuthError, GetUserLogin } from '../../../store/auth/selectors';
 import { AuthErrorAction, SetAuthEmailAction, SetAuthPasswordAction, UserLoginAction, UserLogoutAction } from '../../../store/auth/actions';
 import { GetUserRegistered } from '../../../store/users/selectors';

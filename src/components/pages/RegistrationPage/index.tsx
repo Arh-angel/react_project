@@ -3,7 +3,7 @@ import React from 'react';
 import Button from '../../common/Button';
 import ButtonAuthReg from '../../common/Button/ButtonAuthReg';
 import Form from '../../common/Form';
-import Checkbox from '../../common/Form/Checkbox';
+import Checkbox from '../../common/Form/Input/Checkbox';
 import Input from '../../common/Form/Input';
 import PasswordInput from '../../common/Form/Input/PasswordInput';
 
