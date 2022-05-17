@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Header.module.scss';
@@ -14,7 +14,7 @@ import Burger from '../Burger';
 import DropDownMenu from '../DropDownMenu';
 
 const Header = () => {
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
   const [searchItem, setSearchItem] = useState('');
   const [logInLogOut, setLogInLogOut] = useState(false);
   const [path, setPath] = useState('');
@@ -23,6 +23,7 @@ const Header = () => {
   const userReg = useSelector(GetUserRegistered);
   const authError = useSelector(GetAuthError);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userLogin) {
@@ -33,6 +34,10 @@ const Header = () => {
       setPath('/');
     }
   }, [userLogin]);
+
+  const searchResults = () => {
+    navigate('/searchResults');
+  };
 
   const handler = () => {
     if (userLogin) {
@@ -72,7 +77,7 @@ const Header = () => {
               </svg>
                       }
             type="text" />
-          <Button title="Искать" handler={() => { }} width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" icon={null} />
+          <Button title="Искать" handler={searchResults} width="96px" height="36px" background={null} textColor={null} fontSize={null} fontWeight={null} margin={null} borderRadius="0 4px 4px 0" icon={null} />
                   </div> : ''}
         <div className={style.wrapperBtnAccaunt}>
           {!admin ? <Link to="/searchresults" className={style.submitAdvertisement}><Button title="Подать обьявление" handler={() => { }} width="calc(170px + (180 - 170) * ((100vw - 768px) / (1920 - 768)))" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} icon={null} /></Link> : '' }

@@ -18,5 +18,5 @@ $title: 'Jost', sans-serif;
 $text: 'Jost', sans-serif;
 
 //vars
-$title-size: 24px;
+$title-size: calc(18px + (24 - 18) * ((100vw - 320px) / (1920 - 320)));
 $text-size: 14px;
