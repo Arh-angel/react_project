@@ -27,7 +27,22 @@ const ProductPage = () => {
         <div className={style.productHeaderDateTitle}>
           <p className={style.productHeaderDate}>14 апреля 2022</p>
           <h1 className={style.productHeaderTitle}>Стиральная машина Bosch</h1>
-          <p className={style.productHeaderDate}></p>
+          <p className={style.productHeaderSerialNumber}>WS-25645-253-55</p>
+        </div>
+        <div className={style.productHeaderPriceBtn}>
+          <p>22 500 Р</p>
+          <Button
+            title="Показать номер"
+            handler={() => null}
+            width={null}
+            height={null}
+            background="#3A95FF"
+            textColor="#FFFFFF"
+            fontSize="14px"
+            fontWeight="500"
+            margin={null}
+            borderRadius={null}
+            icon={null} />
         </div>
       </div>
     </div>
