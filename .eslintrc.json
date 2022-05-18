@@ -41,6 +41,7 @@
         "react/require-default-props": "off",
         "object-curly-newline": "off",
         "react/jsx-wrap-multilines": "off",
-        "default-param-last": "off"
+        "default-param-last": "off",
+        "max-len": ["off", { "ignoreComments": true }]
     }
 }

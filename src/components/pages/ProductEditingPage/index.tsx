@@ -12,6 +12,7 @@ import 'antd/dist/antd.css';
 import style from './ProductEditingPage.module.scss';
 import Form from '../../common/Form';
 import InputInfo from '../../common/Form/Input/InputInfo';
+import Map from '../../common/Map';
 
 const ProductEditingPage = () => {
   const [isAdmin, setIsAdmin] = useState(true);
@@ -66,9 +67,7 @@ const ProductEditingPage = () => {
             </div>
           </div>
           <InputInfo title="Местоположение" id="location" placeholder="Введите адрес" type="text" />
-          <div className={style.productEditingBlockMap}>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25037.141751332634!2d43.95456789538833!3d56.312718334544094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1634754578909!5m2!1sru!2sru" width="100%" height="457" allowFullScreen loading="lazy" title="Map" />
-          </div>
+          <Map />
           <div className={style.productEditingBlockPublication}>
             <p>Публикация</p>
             <div className={style.productEditingBlockPublicationBtn}>
