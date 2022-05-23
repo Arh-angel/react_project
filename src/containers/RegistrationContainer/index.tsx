@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import RegistrationPage from '../../components/pages/RegistrationPage';
-import { UserLoginAction } from '../../store/auth/actions';
-import { SetUserRegisteredAction } from '../../store/users/actions';
-import { GetUserEmail, GetUserLastName, GetUserName, GetUserPassword, GetUserRegistered } from '../../store/users/selectors';
+
+import { selectUserAuthorized, selectUserEmail, selectUserFirstName, selectUserLastName, selectUserPassword, selectUserRegistered, userAuthorized, userRegistered } from '../../store/slice/userSlice/userSlice';
 
 const RegistrationContainer = () => {
   const [pass, setPass] = useState('');
@@ -12,13 +11,16 @@ const RegistrationContainer = () => {
 
   const [pasMatch, setPasMatch] = useState(false);
 
-  const userName = useSelector(GetUserName);
-  const userLastName = useSelector(GetUserLastName);
-  const userEmail = useSelector(GetUserEmail);
-  const userPassword = useSelector(GetUserPassword);
-  const userRegistered = useSelector(GetUserRegistered);
-  const dispatch = useDispatch();
+  const userName = useAppSelector(selectUserFirstName);
+  const userLastName = useAppSelector(selectUserLastName);
+  const userEmail = useAppSelector(selectUserEmail);
+  const userPassword = useAppSelector(selectUserPassword);
+  const userReg = useAppSelector(selectUserRegistered);
+  const userAuth = useAppSelector(selectUserAuthorized);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  console.log(pass, repeatPass, pasMatch);
 
   const trackPas = (value:string) => {
     setPass(value);
@@ -42,9 +44,9 @@ const RegistrationContainer = () => {
 
   const setUserRegistered = () => {
     if (userName && userLastName && userEmail && userPassword) {
-      dispatch(SetUserRegisteredAction(true));
-      dispatch(UserLoginAction());
-      navigate('/', { state: { userRegistered } });
+      dispatch(userRegistered(true));
+      dispatch(userAuthorized(true));
+      navigate('/', { state: { userReg } });
     }
   };
 

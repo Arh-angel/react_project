@@ -1,26 +1,25 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AuthPage from '../../components/pages/AuthPage';
-import { UserLoginAction } from '../../store/auth/actions';
-import { GetAuthError, GetUserLogin } from '../../store/auth/selectors';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
+import { selectAuthorizationErrorStatus, selectUserAuthorized, userAuthorized } from '../../store/slice/userSlice/userSlice';
 
 const AuthContainer = () => {
-  const authError = useSelector(GetAuthError);
-  const userLogin = useSelector(GetUserLogin);
+  const authErrorStatus = useAppSelector(selectAuthorizationErrorStatus);
+  const userAuth = useAppSelector(selectUserAuthorized);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const handler = () => {
-    if (!authError) {
-      dispatch(UserLoginAction());
-      navigate('/', { state: { userLogin } });
+    if (!authErrorStatus) {
+      dispatch(userAuthorized(true));
+      navigate('/', { state: { userAuth } });
     }
   };
 
   return (
-    <AuthPage handler={handler} />
+    <AuthPage handler={() => null} />
   );
 };
 

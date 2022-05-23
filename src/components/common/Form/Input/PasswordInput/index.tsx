@@ -1,10 +1,7 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AuthErrorAction } from '../../../../../store/auth/actions';
-import { GetUserLogin } from '../../../../../store/auth/selectors';
-import { SetUserPasswordAction } from '../../../../../store/users/actions';
-import { GetRegAuthError, GetUserPassword, GetUserRegistered } from '../../../../../store/users/selectors';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/storeHooks';
+import { addPassword, authorizationErrorStatus, selectUserAuthorized, selectUserPassword, selectUserRegistered } from '../../../../../store/slice/userSlice/userSlice';
 import style from './PasswordInput.module.scss';
 
 type InputPropsType = {
@@ -25,10 +22,10 @@ const PasswordInput = ({
   const [currentValue, setCurrentValue] = useState('');
   const [valid, setValid] = useState(true);
 
-  const userRegistered = useSelector(GetUserRegistered);
-  const userLogin = useSelector(GetUserLogin);
-  const userPassword = useSelector(GetUserPassword);
-  const dispatch = useDispatch();
+  const userRegistered = useAppSelector(selectUserRegistered);
+  const isAuthorized = useAppSelector(selectUserAuthorized);
+  const userPassword = useAppSelector(selectUserPassword);
+  const dispatch = useAppDispatch();
 
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(event.target.value);
@@ -40,23 +37,26 @@ const PasswordInput = ({
 
   useEffect(() => {
     if (id === 'password') {
+      console.log(currentValue);
       trackPas(currentValue);
     } else if (id === 'repeatPassword') {
+      console.log(currentValue);
       trackRepeatPas(currentValue);
     }
   }, [currentValue]);
 
   useEffect(() => {
+    console.log(currentValue); // странно когда убираешь консоль не работает
     if (currentValue.length > 0) {
       if (!currentValue.match(regPas) || (!pasMatch && pasMatch !== null)) {
         setValid(false);
-        dispatch(AuthErrorAction(true));
+        dispatch(authorizationErrorStatus(true));
       } else {
         setValid(true);
-        dispatch(AuthErrorAction(false));
+        dispatch(authorizationErrorStatus(false));
       }
     }
-  }, [currentValue]);
+  }, []);
 
   useEffect(() => {
     if (isVisible) {
@@ -69,13 +69,13 @@ const PasswordInput = ({
   useEffect(() => {
     if (!userRegistered) {
       if (valid) {
-        dispatch(SetUserPasswordAction(currentValue));
+        dispatch(addPassword(currentValue));
       }
     }
-    if (!userLogin) {
+    if (!isAuthorized) {
       if (valid) {
         if (currentValue === userPassword) {
-          dispatch(AuthErrorAction(false));
+          dispatch(authorizationErrorStatus(false));
         }
       }
     }
@@ -83,9 +83,10 @@ const PasswordInput = ({
 
   const createClassName = () => {
     if (pasMatch === null) {
-      console.log(valid);
       return !valid ? style.notValid : '';
     }
+    // console.log(valid);
+    // console.log(pasMatch);
     return !valid || !pasMatch ? style.notValid : '';
   };
 

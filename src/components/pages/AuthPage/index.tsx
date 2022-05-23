@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { GetUserEmail, GetUserPassword } from '../../../store/users/selectors';
+import React from 'react';
 import Button from '../../common/Button';
 import ButtonAuthReg from '../../common/Button/ButtonAuthReg';
 import Form from '../../common/Form';
@@ -14,9 +12,6 @@ type AuthPageType = {
 
 const AuthPage = (props: AuthPageType) => {
   const { handler } = props;
-
-  const userEmail = useSelector(GetUserEmail);
-  const userPassword = useSelector(GetUserPassword);
 
   return (
     <Form title="Hello, world!" supTitle="Пройдите авторизацию">

@@ -7,11 +7,12 @@ import style from './Header.module.scss';
 
 import Button from '../Button';
 import SearchInput from '../Form/Input/SearchInput';
-import { GetAuthError, GetUserLogin } from '../../../store/auth/selectors';
-import { AuthErrorAction, SetAuthEmailAction, SetAuthPasswordAction, UserLoginAction, UserLogoutAction } from '../../../store/auth/actions';
-import { GetUserRegistered } from '../../../store/users/selectors';
+// import { GetAuthError, GetUserLogin } from '../../../store/auth/selectors';
+// import { AuthErrorAction, SetAuthEmailAction, SetAuthPasswordAction, UserLoginAction, UserLogoutAction } from '../../../store/auth/actions';
+// import { GetUserRegistered } from '../../../store/users/selectors';
 import Burger from '../Burger';
 import DropDownMenu from '../DropDownMenu';
+import { useAppSelector } from '../../../hooks/storeHooks';
 
 const Header = () => {
   const [admin, setAdmin] = useState(false);
@@ -19,33 +20,33 @@ const Header = () => {
   const [logInLogOut, setLogInLogOut] = useState(false);
   const [path, setPath] = useState('');
 
-  const userLogin = useSelector(GetUserLogin);
-  const userReg = useSelector(GetUserRegistered);
-  const authError = useSelector(GetAuthError);
+  // const userLogin = useSelector(GetUserLogin);
+  const userReg = useAppSelector((state) => state.user.userRegistered);
+  // const authError = useSelector(GetAuthError);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (userLogin) {
-      setLogInLogOut(true);
-      setPath('/auth');
-    } else {
-      setLogInLogOut(false);
-      setPath('/');
-    }
-  }, [userLogin]);
+  // useEffect(() => {
+  //   if (userLogin) {
+  //     setLogInLogOut(true);
+  //     setPath('/auth');
+  //   } else {
+  //     setLogInLogOut(false);
+  //     setPath('/');
+  //   }
+  // }, [userLogin]);
 
   const searchResults = () => {
     navigate('/searchResults');
   };
 
-  const handler = () => {
-    if (userLogin) {
-      dispatch(UserLogoutAction());
-    } else {
-      dispatch(UserLoginAction());
-    }
-  };
+  // const handler = () => {
+  //   if (userLogin) {
+  //     dispatch(UserLogoutAction());
+  //   } else {
+  //     dispatch(UserLoginAction());
+  //   }
+  // };
 
   return (
     <header className={style.header}>
@@ -82,7 +83,8 @@ const Header = () => {
         <div className={style.wrapperBtnAccaunt}>
           {!admin ? <Link to="/searchresults" className={style.submitAdvertisement}><Button title="Подать обьявление" handler={() => { }} width="calc(170px + (180 - 170) * ((100vw - 768px) / (1920 - 768)))" height="36px" background="#FFAC28" textColor="#1D1D1D" fontSize={null} fontWeight={null} margin={null} borderRadius={null} icon={null} /></Link> : '' }
           <div className={style.profileContainer}>
-            <Link className={style.authLink} onClick={handler} to={path}>{logInLogOut ? <DropDownMenu /> : 'Войти'}</Link>
+          {/* handler */}
+            <Link className={style.authLink} onClick={() => null} to={path}>{logInLogOut ? <DropDownMenu /> : 'Войти'}</Link>
           </div>
           <div className={style.lockBurger}>
             <Link to="/basket" className={style.lock}>

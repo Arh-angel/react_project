@@ -42,6 +42,7 @@
         "object-curly-newline": "off",
         "react/jsx-wrap-multilines": "off",
         "default-param-last": "off",
-        "max-len": ["off", { "ignoreComments": true }]
+        "max-len": ["off", { "ignoreComments": true }],
+        "no-param-reassign": [2, { "props": false }]
     }
 }

@@ -1,13 +1,12 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { GetUserLogin } from '../../store/auth/selectors';
-import { GetUserRegistered } from '../../store/users/selectors';
+import { useAppSelector } from '../../hooks/storeHooks';
+import { selectUserAuthorized, selectUserRegistered } from '../../store/slice/userSlice/userSlice';
 
 const AuthHOC: React.FC = ({ children }) => {
-  const userReg = useSelector(GetUserRegistered);
-  const userLogin = useSelector(GetUserLogin);
+  const userReg = useAppSelector(selectUserRegistered);
+  const userAuth = useAppSelector(selectUserAuthorized);
 
   if (true) {
     return <>{children}</>;
