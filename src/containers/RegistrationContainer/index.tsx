@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import RegistrationPage from '../../components/pages/RegistrationPage';
 
-import { selectUserAuthorized, selectUserEmail, selectUserFirstName, selectUserLastName, selectUserPassword, selectUserRegistered, userAuthorized, userRegistered } from '../../store/slice/userSlice/userSlice';
+import { selectUserAuthorized, selectUserEmail, selectUserFirstName, selectUserLastName, selectUserPassword, selectUserRegistered, userAuthorized, userRegistered, selectAgreementStatus } from '../../store/slice/userSlice/userSlice';
 
 const RegistrationContainer = () => {
   const [pass, setPass] = useState('');
@@ -17,6 +17,7 @@ const RegistrationContainer = () => {
   const userPassword = useAppSelector(selectUserPassword);
   const userReg = useAppSelector(selectUserRegistered);
   const userAuth = useAppSelector(selectUserAuthorized);
+  const userAgreement = useAppSelector(selectAgreementStatus);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -43,7 +44,7 @@ const RegistrationContainer = () => {
   }, [pass, repeatPass]);
 
   const setUserRegistered = () => {
-    if (userName && userLastName && userEmail && userPassword) {
+    if (userName && userLastName && userEmail && userPassword && userAgreement) {
       dispatch(userRegistered(true));
       dispatch(userAuthorized(true));
       navigate('/', { state: { userReg } });

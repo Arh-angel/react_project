@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-indent */
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/storeHooks';
-import { addPassword, authorizationErrorStatus, selectUserAuthorized, selectUserPassword, selectUserRegistered } from '../../../../../store/slice/userSlice/userSlice';
+import { addPassword, authorizationErrorStatus, selectUserAuthorized, selectUserPassword, selectUserRegistered, userAuthorized } from '../../../../../store/slice/userSlice/userSlice';
 import style from './PasswordInput.module.scss';
 
 type InputPropsType = {
@@ -37,16 +37,13 @@ const PasswordInput = ({
 
   useEffect(() => {
     if (id === 'password') {
-      console.log(currentValue);
       trackPas(currentValue);
     } else if (id === 'repeatPassword') {
-      console.log(currentValue);
       trackRepeatPas(currentValue);
     }
   }, [currentValue]);
 
   useEffect(() => {
-    console.log(currentValue); // странно когда убираешь консоль не работает
     if (currentValue.length > 0) {
       if (!currentValue.match(regPas) || (!pasMatch && pasMatch !== null)) {
         setValid(false);
@@ -55,8 +52,11 @@ const PasswordInput = ({
         setValid(true);
         dispatch(authorizationErrorStatus(false));
       }
+    } else {
+      setValid(true);
+      dispatch(authorizationErrorStatus(false));
     }
-  }, []);
+  }, [pasMatch, currentValue]);
 
   useEffect(() => {
     if (isVisible) {
@@ -79,14 +79,12 @@ const PasswordInput = ({
         }
       }
     }
-  }, [currentValue]);
+  }, [currentValue, pasMatch]);
 
   const createClassName = () => {
     if (pasMatch === null) {
       return !valid ? style.notValid : '';
     }
-    // console.log(valid);
-    // console.log(pasMatch);
     return !valid || !pasMatch ? style.notValid : '';
   };
 

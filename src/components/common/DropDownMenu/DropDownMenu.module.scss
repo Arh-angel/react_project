@@ -3,9 +3,10 @@
 .dropDownMenuContainer {
   width: auto;
   height: auto;
+  position: relative;
+
 
   & > .dropDownMenuBtn {
-    position: relative;
     display: flex;
     align-items: center;
     margin: 0;
@@ -16,19 +17,20 @@
   }
 
   & > .dropDownMenu {
-    display:flex;
+    display: none;
     position: absolute;
-    top: 60px;
-    right: 110px;
+    top: 20px;
+    right: 0;
     width: 267px;
-    border-radius: 4px;
-    background-color: $second-main-color;
-    box-shadow: 0 2px 12px 0 #00000010;
 
     & > ul {
       display: flex;
       flex-direction: column;
       width: 100%;
+      background-color: $second-main-color;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px 0 #00000010;
+      margin-top: 26px;
 
        & > li {
         list-style: none;
@@ -72,7 +74,7 @@
     }
   }
 
-  // &:hover:last-child .dropDownMenu {
-  //     display: block;
-  // }
+  &:hover > .dropDownMenu {
+      display: flex;
+  }
 }
