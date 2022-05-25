@@ -9,12 +9,13 @@ type InputPropsType = {
   placeholder: string;
   type: 'text' | 'password';
   trackPas: (value: string) => void | null;
-  trackRepeatPas: (value: string) => void | null
-  pasMatch: boolean | null
+  trackRepeatPas: (value: string) => void | null;
+  pasMatch: boolean | null;
+  writePassword: (value:string) => void | null
 };
 
 const PasswordInput = ({
-  id, placeholder, type = 'password', trackPas, trackRepeatPas, pasMatch
+  id, placeholder, type = 'password', trackPas, trackRepeatPas, pasMatch, writePassword
 }: InputPropsType) => {
   const regPas = /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;
   const [isVisible, setIsVisible] = useState(false);
@@ -36,10 +37,15 @@ const PasswordInput = ({
   }, []);
 
   useEffect(() => {
-    if (id === 'password') {
-      trackPas(currentValue);
-    } else if (id === 'repeatPassword') {
-      trackRepeatPas(currentValue);
+    if (!userRegistered) {
+      if (id === 'password') {
+        trackPas(currentValue);
+      } else if (id === 'repeatPassword') {
+        trackRepeatPas(currentValue);
+      }
+    }
+    if (!isAuthorized) {
+      writePassword(currentValue);
     }
   }, [currentValue]);
 
@@ -67,19 +73,25 @@ const PasswordInput = ({
   }, [isVisible]);
 
   useEffect(() => {
-    if (!userRegistered) {
-      if (valid) {
-        dispatch(addPassword(currentValue));
-      }
-    }
-    if (!isAuthorized) {
-      if (valid) {
-        if (currentValue === userPassword) {
-          dispatch(authorizationErrorStatus(false));
+    if (currentValue.length > 0) {
+      if (!userRegistered) {
+        if (valid) {
+          dispatch(addPassword(currentValue));
         }
       }
+      // if (!isAuthorized) {
+      //   if ((id === 'password' || id === 'repeatPassword') && valid) {
+      //     if (currentValue === userPassword) {
+      //       dispatch(authorizationErrorStatus(false));
+      //     } else {
+      //       dispatch(authorizationErrorStatus(true));
+      //     }
+      //   }
+      // }
+    } else {
+      dispatch(authorizationErrorStatus(true));
     }
-  }, [currentValue, pasMatch]);
+  }, [currentValue, pasMatch, valid]);
 
   const createClassName = () => {
     if (pasMatch === null) {

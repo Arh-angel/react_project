@@ -25,11 +25,11 @@ const Header = () => {
 
   useEffect(() => {
     if (userAuth) {
-      setLogInLogOut(true);
-      setPath('/auth');
-    } else {
-      setLogInLogOut(false);
       setPath('/');
+      setLogInLogOut(true);
+    } else {
+      setPath('/auth');
+      setLogInLogOut(false);
     }
   }, [userAuth]);
 
@@ -39,9 +39,10 @@ const Header = () => {
 
   const handler = () => {
     if (userAuth) {
+      // setPath('/');
       dispatch(userAuthorized(false));
     } else {
-      dispatch(userAuthorized(true));
+      // setPath('/auth');
     }
   };
 

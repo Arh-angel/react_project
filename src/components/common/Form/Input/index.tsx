@@ -8,10 +8,11 @@ type InputPropsType = {
   id: string;
   placeholder: string | null;
   type: 'text' | 'password' | 'tel' | 'file';
+  writeEmail: (value:string) => void | null
 };
 
 const Input = ({
-  id, placeholder, type = 'text'
+  id, placeholder, type = 'text', writeEmail
 }: InputPropsType) => {
   // eslint-disable-next-line no-useless-escape
   const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -27,6 +28,12 @@ const Input = ({
   const handler = (event: ChangeEvent<HTMLInputElement>) => {
     setCurrentValue(event.target.value);
   };
+
+  useEffect(() => {
+    if (!isAuthorized) {
+      writeEmail(currentValue);
+    }
+  }, [currentValue]);
 
   useEffect(() => {
     if (currentValue.length > 0) {
@@ -48,25 +55,31 @@ const Input = ({
   }, [currentValue]);
 
   useEffect(() => {
-    if (!isRegistered) {
-      if (id === 'name' && valid) {
-        dispatch(addFirstName(currentValue));
-      } else if (id === 'lastName' && valid) {
-        dispatch(addLastName(currentValue));
-      } else if (id === 'age' && valid) {
-        dispatch(addAge(currentValue));
-      } else if (id === 'email' && valid) {
-        dispatch(addEmail(currentValue));
-      }
-    }
-    if (!isAuthorized) {
-      if (id === 'email' && valid) {
-        if (currentValue === userEmail) {
-          dispatch(authorizationErrorStatus(false));
+    if (currentValue.length > 0) {
+      if (!isRegistered) {
+        if (id === 'name' && valid) {
+          dispatch(addFirstName(currentValue));
+        } else if (id === 'lastName' && valid) {
+          dispatch(addLastName(currentValue));
+        } else if (id === 'age' && valid) {
+          dispatch(addAge(currentValue));
+        } else if (id === 'email' && valid) {
+          dispatch(addEmail(currentValue));
         }
       }
+      // if (!isAuthorized) {
+      //   if (id === 'email' && valid) {
+      //     if (currentValue === userEmail) {
+      //       dispatch(authorizationErrorStatus(false));
+      //     } else {
+      //       dispatch(authorizationErrorStatus(true));
+      //     }
+      //   }
+      // }
+    } else {
+      dispatch(authorizationErrorStatus(true));
     }
-  }, [currentValue]);
+  }, [currentValue, valid]);
 
   return (
     <label className={style.wrapper} htmlFor={id}>

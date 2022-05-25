@@ -4,6 +4,7 @@
 .header {
   grid-area: header;
   background-color: $second-main-color;
+  z-index: 10;
 
   & .container {
     display: flex;
