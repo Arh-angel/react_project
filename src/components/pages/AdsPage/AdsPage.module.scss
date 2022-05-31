@@ -7,12 +7,12 @@
   align-items: flex-start;
   margin-top: 40px;
 
-  & > .adminPageAds {
+  & > .ads {
     width: 100%;
     margin-left: 40px;
     margin-bottom: 248px;
 
-    & > .adminPageAdsHeader {
+    & > .adsHeader {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -21,13 +21,15 @@
       border-bottom: 1px solid #342b2b33;
       margin-bottom: 24px;
 
-      & > .adminPageAdsHeaderText {
-        & > .adminPageAdsHeaderTitle {
+      & > .adsHeaderText {
+        & > .adsHeaderTitle {
           font-size: 24px;
           font-weight: 700;
           line-height: 32px;
         }
-        & > .adminPageAdsHeaderSubTitle {
+        & > .adsHeaderSubTitle {
+          display: flex;
+          align-items: center;
           line-height: 24px;
         }
       }
@@ -76,8 +78,25 @@
         background-color: #FFFFFF;
       }
     }
+    & > .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & > .text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 72px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        color: $title-color;
+        margin-right: 16px;
+      }
+    }
   }
-  & > .adminPageAboutAds {
+  & > .aboutAds {
     display: grid;
     grid-template-columns: 1fr 0.5fr 0.5fr 0.3fr 0.2fr;
     background-color: #FFFFFF;
@@ -90,7 +109,7 @@
       padding-left: 24px;
     }
 
-    & > .adminPageAboutAdsTitle {
+    & > .aboutAdsTitle {
       justify-content: flex-start;
       font-size: 12px;
       align-self: center;
@@ -100,62 +119,9 @@
       line-height: 16px;
     }
   }
-  & > .adminPageWrapperProductList {
+  & > .wrapperProductList {
     width: 100%;
     background-color: #FFFFFF;
-
-    & > .adminPageProductList {
-
-      & > .adminPageProductItem {
-        display: grid;
-        grid-template-columns: 1fr 0.5fr 0.5fr 0.3fr 0.2fr;
-        align-items: center;
-        height: 80px;
-
-        & > p {
-          font-size: 14px;
-          line-height: 24px;
-
-          &:first-child {
-            padding-left: 24px;
-            font-weight: 700;
-          }
-        }
-
-        & > button {
-          padding: 0;
-          margin-right: 24px;
-          opacity: .4;
-        }
-
-        &:hover {
-          border-radius: 4px;
-          border: 1px solid rgba(72, 119, 242, 0.5);
-          box-shadow: 0 8px 36px 0 rgba(33, 33, 33, 0.06);
-        }
-
-        & > .adminPageProductItemBtnWrapper {
-          position: relative;
-          margin-right: 24px;
-
-          & > button {
-            border-radius: 0;
-            padding: 4px;
-            margin: 0;
-          }
-
-          & > div {
-            position: absolute;
-            right: 0;
-            top: 32px;
-
-            & > ul > li:last-child {
-              border: 0;
-            }
-          }
-        }
-      }
-    } 
   }
   } 
 }

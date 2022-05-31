@@ -9,7 +9,7 @@ import AuthContainer from './containers/AuthContainer';
 
 import MainContainer from './containers/MainContainer';
 import SearchResultsContainer from './containers/SearchResultsContainer';
-import AdminPanelContainer from './containers/AdminPanelContainer';
+import AdsContainer from './containers/AdsContainer';
 import ProductEditingContainer from './containers/ProductEditingContainer';
 import ErContainer from './containers/ErContainer';
 import ProductContainer from './containers/ProductContainer';
@@ -19,7 +19,7 @@ const App = () => (
     <Route path="/" element={<PageWrapper />}>
       <Route index element={<AuthHOC><MainContainer /></AuthHOC>} />
       <Route path="/:id" element={<AuthHOC><ProductContainer /></AuthHOC>} />
-      <Route path="adminPanel" element={<AuthHOC><AdminPanelContainer /></AuthHOC>} />
+      <Route path="ads" element={<AuthHOC><AdsContainer /></AuthHOC>} />
       <Route path="productEditing" element={<AuthHOC><ProductEditingContainer /></AuthHOC>} />
       <Route path="searchResults" element={<AuthHOC><SearchResultsContainer /></AuthHOC>} />
       <Route path="reg" element={<RegistrationContainer />} />

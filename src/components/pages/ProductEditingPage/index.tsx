@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-indent */
 import { Radio } from 'antd';
 import React, { useState } from 'react';
-import AdminMenu from '../../common/AdminMenu';
+import AdminMenu from '../../common/AsideMenu';
 import Button from '../../common/Button';
 import Input from '../../common/Form/Input';
 import Select from '../../common/Form/Input/Select';
