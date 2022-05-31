@@ -1,11 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import AdsPage from '../../components/pages/AdsPage';
 
 const AdsContainer = () => {
-  console.log('AdsContainer');
+  const navigate = useNavigate();
+  const handlerBtn = () => {
+    navigate('/productEditing');
+  };
 
   return (
-    <AdsPage />
+    <AdsPage handlerBtn={handlerBtn} />
   );
 };
 

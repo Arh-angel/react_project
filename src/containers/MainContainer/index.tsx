@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import MainPage from '../../components/pages/MainPage';
 
 const MainContainer = () => {
-  console.log('mainContainer');
+  console.log('Main Container');
+
   return (
     <MainPage />
   );

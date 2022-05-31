@@ -9,7 +9,13 @@ import Filter from '../../common/Filter';
 
 import style from './AdsPage.module.scss';
 
-const AdsPage = () => {
+type AdsProps = {
+  handlerBtn: () => void;
+}
+
+const AdsPage = (props: AdsProps) => {
+  const { handlerBtn } = props;
+
   const [ads, setAds] = useState<object[]>([{ id: 1, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 2, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 3, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 4, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 5, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 6, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 7, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 8, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }, { id: 9, name: 'Чепчик', category: 'Одежда', publicationDate: '12 апреля 2022', publicationStatus: 'Да' }]);
   const [openFilterMenu, setOpenFilterMenu] = useState(false);
   const [firstPagePag, setFirstPagePag] = useState(false);
@@ -62,7 +68,7 @@ const AdsPage = () => {
           </div>
           <Button
             title="Добавить"
-            handler={() => null}
+            handler={handlerBtn}
             width="129px"
             height="40px"
             background={null}

@@ -29,7 +29,7 @@ const AsideMenu = () => {
               </Link>
             </li>
             <li className={style.asideMenuitem}>
-              <Link to="/myAds" className={myAdsOpen ? style.openLink : ''}>
+              <Link to="/ads" className={myAdsOpen ? style.openLink : ''}>
                 <span className={style.asideMenuLineActiveLink} />
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.66666 2.5H6.66666C7.55072 2.5 8.39857 2.85119 9.02369 3.47631C9.64881 4.10143 10 4.94928 10 5.83333V17.5C10 16.837 9.73661 16.2011 9.26776 15.7322C8.79892 15.2634 8.16304 15 7.5 15H1.66666V2.5Z" stroke="#2A2F37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

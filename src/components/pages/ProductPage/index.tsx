@@ -12,14 +12,18 @@ import Map from '../../common/Map';
 import ProductItem from '../../common/ProductList/ProductItem';
 import ProductItemAside from '../../common/ProductList/ProductItem/ProductItemAside';
 
-const ProductPage = () => {
-  console.log('Product Page');
+type ProductPagePropsType = {
+  handlerBtnBack: () => void
+}
+
+const ProductPage = (props: ProductPagePropsType) => {
+  const { handlerBtnBack } = props;
 
   return (
     <div className={style.container}>
       <Button
         title={null}
-        handler={() => null}
+        handler={handlerBtnBack}
         width={null}
         height={null}
         background="transparent"

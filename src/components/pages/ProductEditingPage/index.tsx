@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
-import { Radio } from 'antd';
 import React, { useState } from 'react';
+
+import { Radio } from 'antd';
 import AdminMenu from '../../common/AsideMenu';
 import Button from '../../common/Button';
 import Input from '../../common/Form/Input';
@@ -14,9 +15,14 @@ import Form from '../../common/Form';
 import InputInfo from '../../common/Form/Input/InputInfo';
 import Map from '../../common/Map';
 
-const ProductEditingPage = () => {
+type ProductEditingPageProps = {
+  handlerBtnBack: () => void
+};
+
+const ProductEditingPage = (props: ProductEditingPageProps) => {
+  const { handlerBtnBack } = props;
+
   const [isAdmin, setIsAdmin] = useState(true);
-  console.log('product editing');
 
   return (
     <div className={style.container}>
@@ -24,7 +30,7 @@ const ProductEditingPage = () => {
       <Form title={null} supTitle={null}>
       <Button
         title="Вернуться назад"
-        handler={() => null}
+        handler={handlerBtnBack}
         width="auto"
         height={null}
         background="transparent"

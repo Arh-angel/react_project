@@ -1,11 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProductEditingPage from '../../components/pages/ProductEditingPage';
 
 const ProductEditingContainer = () => {
-  console.log('Product editing container');
+  const navigate = useNavigate();
+
+  const handlerBtnBack = () => {
+    navigate('/ads');
+  };
 
   return (
-    <ProductEditingPage />
+    <ProductEditingPage handlerBtnBack={handlerBtnBack} />
   );
 };
 

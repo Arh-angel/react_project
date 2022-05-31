@@ -5,7 +5,7 @@ import MainMenu from '../../common/MainMenu';
 import ProductList from '../../common/ProductList';
 
 const MainPage = () => {
-  console.log('mainPage');
+  console.log('main page');
 
   return (
     <>

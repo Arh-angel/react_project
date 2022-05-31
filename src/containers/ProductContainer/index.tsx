@@ -1,11 +1,19 @@
 import React from 'react';
+import { useNavigate, useNavigationType, useParams } from 'react-router-dom';
 import ProductPage from '../../components/pages/ProductPage';
+import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 
 const ProductContainer = () => {
-  console.log('Product Container');
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handlerBtnBack = () => {
+    navigate(-1);
+  };
 
   return (
-    <ProductPage />
+    <ProductPage handlerBtnBack={handlerBtnBack} />
   );
 };
 
